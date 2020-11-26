@@ -23,7 +23,7 @@ class UserController extends Controller{
     
 
     public function show(){
-
+       //dd("test");
         $showObj = User::all();
     
        return view('user/show', ['showObj' => $showObj]);
