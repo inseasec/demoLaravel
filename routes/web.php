@@ -38,3 +38,5 @@ Route::get('/user/delete/{id}', 'UserController@delete');
 
 // Route::get('/user/deleterecord/{id}', 'UserController@deleteRecord');
 
+Route::get('delete', 'UserController@delete')->name('delete');
+

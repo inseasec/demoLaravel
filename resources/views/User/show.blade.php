@@ -66,22 +66,13 @@
       <td><a href='delete/{{$print_user->id}}' class="btn btn-danger" onclick="return confirm('You really want to delete this record?')">Delete</a></td>
 
       <!-- <td><button class="btn btn-danger" id="deleterecord" data-Id="{{ $print_user->id }}">Delete</button></td> -->
+
+      <td><button class="btn btn-danger" id="delete" data-Id="{{ $print_user->id }}">Delete</button></td>
         </tr>
         @endforeach
         </tbody>
       
       </table>
-     
-
-      <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.8.2.min.js"></script>
-      <script type="text/javascript" charset="utf8" src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
-
-      <script>
-        $(function(){
-          $("#data").dataTable();
-        })
-      </script>
-
 
 
 <!-- <script>
@@ -108,7 +99,24 @@ $('td #deleterecord').on('click',function(){
 
 });
 
-</script> -->
+</script> -->\
+
+<script>
+$(document).on("click", '#delete', function(e){
+  var id = $(this).val();
+  e.preventDefault();
+  $.ajax({
+    url:'delete/'+id,
+    method:'GET',
+    data:{id:id, 
+          _token: '{{csrf_token()}}'},
+    dataType:'json',
+    success:function(data){
+      read();
+    }
+  })
+})
+</script>
     
 </body>
 </html>

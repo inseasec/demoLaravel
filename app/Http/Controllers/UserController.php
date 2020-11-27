@@ -26,7 +26,7 @@ class UserController extends Controller{
        //dd("test");
         $showObj = User::all();
     
-       return view('user/show', ['showObj' => $showObj]);
+       return view('User/show', ['showObj' => $showObj]);
     
 
 }
@@ -64,41 +64,19 @@ public function update(Request $request){
     //     ]);
     // }
 
-    public function delete($id){
-        $delObj = User::find($id);
-        // dd($delObj);
-        $delObj->delete();
-        return redirect('user/show');
+    // public function delete($id){
+    //     $delObj = User::find($id);
+    //     // dd($delObj);
+    //     $delObj->delete();
+    //     return redirect('user/show');
 
+    //     }
+
+        public function delete(Request $request){
+            $id = $request->id;
+            $data = User::find($id);
+            return Response::json($data);
         }
-
-        // public function deleteRecord($id){
-
-        //     $delObj = User::find($id);
-        //     // dd($delObj);
-        //     $response= $delObj->delete();
-        //     if($response){
-        //         $showObj = User::all();
-        //         $table ="";
-        //         foreach($showObj as $print_user){
-        //             $table .="<tr>";
-        //             $table .="<td>$print_user->id</td>";
-        //             $table .="<td>$print_user->Name</td>";
-        //             $table .="<td>$print_user->Email</td>";
-        //             $table .="<td>$print_user->Password</td>";
-        //             $table .="<td>$print_user->Number</td>";
-        //             $table .="<td>";
-        //             $table .="<button class='btn btn-danger' id='deleterecord' data-Id=$print_user->id'>Delete</button>";
-        //             $table .="</td>";
-        //             $table .="</tr>";
-        //         }
-
-
-        //     return  $table;
-        //      }
-
-        //     }
-    
 
 
     }
