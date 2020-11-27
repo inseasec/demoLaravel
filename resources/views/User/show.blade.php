@@ -12,7 +12,7 @@
   </head>
 <body>
 <!-- <div id="error"></div> -->
-      <a href='create' class="btn btn-lg btn btn-primary mt-5">Add Record</a>
+      <a href='create' class="btn btn-lg btn btn-primary mt-5">Add Record hh</a>
       <table id="data" class= "table table-dark mt-5">
         <thead>
         <tr>
