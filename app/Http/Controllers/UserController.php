@@ -23,10 +23,10 @@ class UserController extends Controller{
     
 
     public function show(){
-       //dd("test");
+
         $showObj = User::all();
     
-       return view('User/show', ['showObj' => $showObj]);
+       return view('user/show', ['showObj' => $showObj]);
     
 
 }
@@ -59,24 +59,30 @@ public function update(Request $request){
     //     #return redirect('user/readdata');  
 
 
-    //     return response()->json([
-    //         'success'=> 'Record deleted successfully!'
-    //     ]);
+        // return response()->json([
+        //     'success'=> 'Record deleted successfully!'
+        // ]);
     // }
 
     // public function delete($id){
     //     $delObj = User::find($id);
-    //     // dd($delObj);
+    //     dd($delObj);
     //     $delObj->delete();
     //     return redirect('user/show');
 
     //     }
 
-        public function delete(Request $request){
-            $id = $request->id;
-            $data = User::find($id);
-            return Response::json($data);
+        
+
+        public function deleterecord($id){
+           
+            
+            $delObj = User::find($id);
+            $delObj->delete();
+
+            return 'deleted';
         }
+    
 
 
     }

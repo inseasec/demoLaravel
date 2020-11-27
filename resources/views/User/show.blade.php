@@ -8,12 +8,11 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
-    <link rel="stylesheet" type="text/css" href="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/css/jquery.dataTables.css">
   </head>
 <body>
 <!-- <div id="error"></div> -->
-      <a href='create' class="btn btn-lg btn btn-primary mt-5">Add Record hh</a>
-      <table id="data" class= "table table-dark mt-5">
+      <a href='create' class="btn btn-lg btn btn-primary mt-5">Add Record TO MERCURY</a>
+      <table class= "table table-dark mt-5">
         <thead>
         <tr>
           <th>Id</th>
@@ -63,60 +62,43 @@
         <button class ="deleteRecord btn btn-danger"  onclick='deleteRecord(<?php echo $print_user->id; ?>)' >Delete</button></td>
         -->
 
-      <td><a href='delete/{{$print_user->id}}' class="btn btn-danger" onclick="return confirm('You really want to delete this record?')">Delete</a></td>
+      <!-- <td><a href='delete/{{$print_user->id}}' class="btn btn-danger" onclick="return confirm('You really want to delete this record?')">Delete</a></td> -->
 
-      <!-- <td><button class="btn btn-danger" id="deleterecord" data-Id="{{ $print_user->id }}">Delete</button></td> -->
+      <td><button class="btn btn-danger" id="deleterecord" data-Id="{{ $print_user->id }}">Delete</button></td>
 
-      <td><button class="btn btn-danger" id="delete" data-Id="{{ $print_user->id }}">Delete</button></td>
+      <!-- <td><button class="btn btn-danger" id="delete" data-Id="{{ $print_user->id }}">Delete</button></td> -->
         </tr>
         @endforeach
         </tbody>
       
       </table>
 
-
-<!-- <script>
+<script>
 // $("#error").hide();
 $('td #deleterecord').on('click',function(){
 
-  var Id = $(this).data("id");
-  // var Id = $(this).attr('data-id'));
-  //alert(Id);
+  // var Id = $(this).data("id");
+  
+  var Id = $(this).attr('data-Id');
+  // alert(Id);
   $.ajax({
-    url:"/user/deleterecord/"+Id,
+    url:"deleterecord/"+Id,
     type:"get",
     success:function(data){
-     
-      $("#table").html(data);
-      // if(data == deleted){
-      //   window.location.reload();
-      // }else{
-      //   $('#error').show();
-      //   $('#error').html('Something went wrong');
-      // }
+   
+      // $("#table").html(data);
+      if(data == 'deleted'){
+        window.location.reload();
+      }else{
+        $('#error').show();
+        $('#error').html('Something went wrong');
+      }
     }
-  })
+  });
 
 });
 
-</script> -->\
+</script>   
 
-<script>
-$(document).on("click", '#delete', function(e){
-  var id = $(this).val();
-  e.preventDefault();
-  $.ajax({
-    url:'delete/'+id,
-    method:'GET',
-    data:{id:id, 
-          _token: '{{csrf_token()}}'},
-    dataType:'json',
-    success:function(data){
-      read();
-    }
-  })
-})
-</script>
-    
 </body>
 </html>
