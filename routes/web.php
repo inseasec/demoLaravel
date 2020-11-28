@@ -34,9 +34,7 @@ Route::get('/user/edit/{id}', 'UserController@edit');
 Route::post('user/update', 'UserController@update');
 
 
-//hbbbbhjh Route::get('/user/delete/{id}', 'UserController@delete');
+//Route::get('/user/delete/{id}', 'UserController@delete');
 
-// Route::get('delete', 'UserController@delete')->name('delete');
-
-Route::any('user/deleterecord/{id}', 'UserController@deleterecord');
+Route::any('user/delete/{id}', 'UserController@delete');
 

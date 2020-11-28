@@ -17,18 +17,25 @@
             @csrf
             <label for="">Name</label>
             <input type="text" name="Name" class="form-control" required>
+
             <label for="">Email</label>
             <input type="text" name="Email" Id="email" class="form-control" required>
+
             <label for="">Phone Number</label>
             <input type="Number" name="Number" class="form-control" required>
+
             <label for="">Password</label>
             <input type="Password" name="Password" class="form-control" required >
+
             <label for="">Confirm Password</label>
             <input type="Password" name="confirm_Pass" class="form-control" required>
+
             <label for="">Birthday</label>
             <input type="date" name="Birthday" class="form-control" required >
+
             <label for="">Date</label>
             <input type="date" name="Date" class="form-control" required ><br>
+
             <label for="">Gender</label>
             <div class="form-control" required>
             <label for="male" >Male</label>
@@ -38,6 +45,7 @@
             <label for="other">Other</label>
             <input type="radio" id="other" name="Gender" value="other"><br>
             </div><br>
+
             <label for="">Hobbies</label>
             <div class="form-control" required>
             <label for="" required>Eating</label>
@@ -49,6 +57,7 @@
             <label for="">Studying</label>
             <input type="checkbox" id="Studying" value="Studying" name="Hobbies"><br>
             </div><br>
+
             <label for="">Courses</label>
             <div class="form-control" required>
             <select name="Courses" id="Courses" required>
@@ -57,6 +66,7 @@
             <option value="Electronics" >Electronics</option>
             <option value="Mechanical" >Mechanical</option>
             </select><br></div>
+            
             <label for="">Time</label>
             <input type="Time" name="Time" class="form-control" required> 
         

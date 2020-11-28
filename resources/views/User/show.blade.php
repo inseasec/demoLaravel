@@ -10,8 +10,8 @@
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
   </head>
 <body>
-<!-- <div id="error"></div> -->
-      <a href='create' class="btn btn-lg btn btn-primary mt-5">Add Record TO MERCURY</a>
+ <!-- <div id="error"></div> -->
+      <a href='create' class="btn btn-lg btn btn-primary mt-5">Add Record</a>
       <table class= "table table-dark mt-5">
         <thead>
         <tr>
@@ -30,73 +30,61 @@
           <th>Action</th>
           </tr>
         </thead>
-        <!-- <tbody id="table"> -->
+
         <tbody>
 
-        @foreach($showObj as $print_user)
+        @foreach($users as $user)
         
-        <tr>
-        <td>{{$print_user->id}}</td>
-        <td>{{$print_user->Name}}</td>
-        <td>{{$print_user->Email}}</td>
-        <td>{{$print_user->Password}}</td>
-        <td>{{$print_user->Number}}</td>  
-        <td>{{$print_user->confirm_Pass}}</td>
-        <td>{{$print_user->Birthday}}</td>
-        <td>{{$print_user->Date}}</td>  
-        <td>{{$print_user->Gender}}</td>  
-        <td>{{$print_user->Hobbies}}</td>  
-        <td>{{$print_user->Courses}}</td>  
-        <td>{{$print_user->Time}}</td>  
+        <tr id="row">
+        <td>{{$user->id}}</td>
+        <td>{{$user->Name}}</td>
+        <td>{{$user->Email}}</td>
+        <td>{{$user->Password}}</td>
+        <td>{{$user->Number}}</td>  
+        <td>{{$user->confirm_Pass}}</td>
+        <td>{{$user->Birthday}}</td>
+        <td>{{$user->Date}}</td> 
+        <td>{{$user->Gender}}</td>  
+        <td>{{$user->Hobbies}}</td>  
+        <td>{{$user->Courses}}</td>  
+        <td>{{$user->Time}}</td>  
       
 
-        <td><a href='edit/{{$print_user->id}}' class="btn btn-primary" >Update</a></td>
-        <!-- <td><a href='deletedata/{{$print_user->id}}'>
-        <button class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</button></a></td> -->
+        <td><a href='edit/{{$user->id}}' class="btn btn-primary" >Update</a></td>
 
-        <!-- <td> -->
-        <!-- <a href='deletedata/{{$print_user->id}}'></a> -->
+      <!-- <td><a href='delete/{{$user->id}}' class="btn btn-danger" onclick="return confirm('You really want to delete this record?')">Delete</a></td> -->
 
-
-        <!-- @php $id = $print_user->id; @endphp
-        <button class ="deleteRecord btn btn-danger"  onclick='deleteRecord(<?php echo $print_user->id; ?>)' >Delete</button></td>
-        -->
-
-      <!-- <td><a href='delete/{{$print_user->id}}' class="btn btn-danger" onclick="return confirm('You really want to delete this record?')">Delete</a></td> -->
-
-      <td><button class="btn btn-danger" id="deleterecord" data-Id="{{ $print_user->id }}">Delete</button></td>
-
-      <!-- <td><button class="btn btn-danger" id="delete" data-Id="{{ $print_user->id }}">Delete</button></td> -->
+      <td><button class="btn btn-danger" id="delete" data-Id="{{ $user->id }}">Delete</button></td>
+>
         </tr>
         @endforeach
         </tbody>
       
       </table>
 
-<script>
-// $("#error").hide();
-$('td #deleterecord').on('click',function(){
+      <script>
+      // $("#error").hide();
+      $('td #delete').on('click',function(){
 
-  // var Id = $(this).data("id");
-  
-  var Id = $(this).attr('data-Id');
-  // alert(Id);
-  $.ajax({
-    url:"deleterecord/"+Id,
-    type:"get",
-    success:function(data){
-   
-      // $("#table").html(data);
-      if(data == 'deleted'){
-        window.location.reload();
-      }else{
-        $('#error').show();
-        $('#error').html('Something went wrong');
-      }
-    }
-  });
+        var Id = $(this).data("id");
+        
+        var Id = $(this).attr('data-Id');
+        // alert(Id);
+        $.ajax({
+          url:"delete/"+Id,
+          type:"get",
+          success:function(data){
+            if(data == 'deleted'){
+              // window.location.reload();
+              $('#row').remove(); 
+            }else{
+              $('#error').show();
+              $('#error').html('Something went wrong');
+            }
+          }
+        });
 
-});
+      });
 
 </script>   
 

@@ -7,89 +7,61 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller{
 
-    public function create(){
+    public function create() {
         return view('user/create');
     }
 
-    public function insert(Request $request)
-    {
-        
+    public function insert(Request $request) {
+
         $usrObj = new User();
         $usrObj->saveUser($request);
-
         return redirect('user/show');  
     }
 
-    
-
-    public function show(){
-
-        $showObj = User::all();
-    
-       return view('user/show', ['showObj' => $showObj]);
-    
-
-}
-    public function edit($id){
-
-    $editObj = User::find($id);
-
-    return view('user/edit', ['editObj' => $editObj]);
-
-}
-
-public function update(Request $request){
-
-    #dd($request);
-    
-    $updateObj = new User();
-    // $updateObj = User::where('id',$id)->first()->update();
-    $updateObj->saveUser($request);
-
-    return redirect('user/show');  
-}
-
-    // public function deletedata($id){
+    public function show() {
         
-    //     $record = User::where('id', $id)->first()->delete(); 
+        $users = User::all();
+        return view('user/show', ['users' => $users]);
+    
+    }
 
-    //     // $record = User::find($id);
-    //     // $record->delete();
+    public function edit($id) {
 
-    //     #return redirect('user/readdata');  
+        $users = User::find($id);
+        return view('user/edit', ['users' => $users]);
 
+    }
 
-        // return response()->json([
-        //     'success'=> 'Record deleted successfully!'
-        // ]);
+    public function update(Request $request){
+
+        $users = new User();
+        $users->saveUser($request);
+        return redirect('user/show');
+    }
+
+    // public function delete($id){
+        
+    //     $users = User::where('id', $id)->first()->delete(); 
+
+    //     // $users = User::find($id);
+    //     // $users->delete();
+
+    //     return redirect('user/show');  
     // }
 
     // public function delete($id){
-    //     $delObj = User::find($id);
-    //     dd($delObj);
-    //     $delObj->delete();
+    //     $users = User::find($id);
+    //     dd($users);
+    //     $users->delete();
     //     return redirect('user/show');
 
     //     }
 
-        
+    public function delete($id){
 
-        public function deleterecord($id){
-           
-            
-            $delObj = User::find($id);
-            $delObj->delete();
-
-            return 'deleted';
-        }
-    
-
-
+        $users = User::find($id);
+        $users->delete();
+        return 'deleted';
     }
 
-
-
-
-
-
-
+    }

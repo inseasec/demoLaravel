@@ -50,7 +50,14 @@ class User extends Authenticatable
         $dataArr['Birthday'] = $request['Birthday'];
         $dataArr['Date'] = $request['Date'];
         $dataArr['Gender'] = $request['Gender'];
-        $dataArr['Hobbies'] = $request['Hobbies'];
+
+        $dataArr['Hobbies'] = $request['checkbox-Hobbies'];
+        $dataArray = array();
+        
+        foreach($dataArr as $data){
+            $dataArray[] = $data;
+        }
+
         $dataArr['Courses'] = $request['Courses'];
         $dataArr['Time'] = $request['Time'];
         if(!empty($request['id'])){

@@ -13,52 +13,63 @@
             <form action="{{url('user/update')}}" method="post">
             <h3 style= "text-align:center">Edit Details Form</h3>
             @csrf
-            <input type="hidden" name="id" value="{{ $editObj->id }}" class="form-control">
+            <input type="hidden" name="id" value="{{ $users->id }}" class="form-control">
+
             <label for="">Name</label>
-            <input type="text" name="Name" value="{{ $editObj->Name }}" class="form-control">
+            <input type="text" name="Name" value="{{ $users->Name }}" class="form-control">
+
             <label for="">Email</label>
-            <input type="text" name="Email" value="{{ $editObj->Email }}" class="form-control">
+            <input type="text" name="Email" value="{{ $users->Email }}" class="form-control">
+
             <label for="">Number</label>
-            <input type="text" name="Number" value="{{ $editObj->Number }}" class="form-control">
+            <input type="text" name="Number" value="{{ $users->Number }}" class="form-control">
+
             <label for="">Password</label>
-            <input type="Password" name="Password" value="{{ $editObj->Password }}" class="form-control">
+            <input type="Password" name="Password" value="{{ $users->Password }}" class="form-control">
+
             <label for="">Confirm Password</label>
-            <input type="Password" name="confirm_Pass" value="{{ $editObj->confirm_Pass }}" class="form-control">
+            <input type="Password" name="confirm_Pass" value="{{ $users->confirm_Pass }}" class="form-control">
+
             <label for="">Birthday</label>
-            <input type="date" name="Birthday" value="{{ $editObj->Birthday }}" class="form-control">
+            <input type="date" name="Birthday" value="{{ $users->Birthday }}" class="form-control">
+
             <label for="">Date</label>
-            <input type="date" name="Date" value="{{ $editObj->Date }}" class="form-control">
+            <input type="date" name="Date" value="{{ $users->Date }}" class="form-control">
+            
             <label for="">Gender</label>
             <div class="form-control">
             <label for="male">Male</label>
-            <input type="radio" id="male" name="Gender" value="male" value="{{ $editObj->Gender }}"><br>
+            <input type="radio" id="male" name="Gender" value="male" {{ $users->Gender == 'male' ? 'checked' : ''}}  /><br>
             <label for="female">Female</label>
-            <input type="radio" id="female" name="Gender" value="female" value="{{ $editObj->Gender }}"><br>
+            <input type="radio" id="female" name="Gender" value="female" {{ $users->Gender == 'female' ? 'checked' : ''}}/><br>
             <label for="other">Other</label>
-            <input type="radio" id="other" name="Gender" value="other" value="{{ $editObj->Gender }}"><br>
+            <input type="radio" id="other" name="Gender" value="other" {{ $users->Gender == 'other' ? 'checked' : ''}}/><br>
             </div>
+         
             <label for="">Hobbies</label>
             <div class="form-control">
             <label for="">Eating</label>
-            <input type="checkbox" id="Eating" name="Hobbies" value="Eating" value="{{ $editObj->Hobbies }}"><br>
+            <input type="checkbox" id="Eating" name="checkbox-Hobbies[]" value="Eating" {{ $users->Hobbies == 'Eating' ? 'checked' : ''}}><br>    
             <label for="">Sleeping</label>
-            <input type="checkbox" id="Sleeping" name="Hobbies" value="Sleeping" value="{{ $editObj->Hobbies }}"><br>
+            <input type="checkbox" id="Sleeping" name="checkbox-Hobbies[]" value="Sleeping" {{ $users->Hobbies == 'Sleeping' ? 'checked' : ''}}><br>
             <label for="">Travelling</label>
-            <input type="checkbox" id="Travelling" name="Hobbies" value="Travelling" value="{{ $editObj->Hobbies }}"><br>
+            <input type="checkbox" id="Travelling" name="checkbox-Hobbies[]" value="Travelling" {{ $users->Hobbies == 'Travelling' ? 'checked' : ''}}><br>
             <label for="">Studying</label>
-            <input type="checkbox" id="Studying" name="Hobbies" value="Studying" value="{{ $editObj->Hobbies }}">
+            <input type="checkbox" id="Studying" name="checkbox-Hobbies[]" value="Studying" {{ $users->Hobbies == 'Studying' ? 'checked' : ''}}>
             </div>
+            
             <label for="">Courses</label>
             <div class="form-control">
             <select name="Courses" id="Courses">
-            <option value="Computer Science" name="Courses" value="{{ $editObj->Hobbies }}">Computer Science</option>
-            <option value="Science" name="Courses" value="{{ $editObj->Hobbies }}">Science</option>
-            <option value="Electronics" name="Courses" value="{{ $editObj->Hobbies }}">Electronics</option>
-            <option value="Mechanical" name="Courses" value="{{ $editObj->Hobbies }}">Mechanical</option>
+            <option value="Computer Science" name="Courses" {{ $users->Courses == 'Computer Science' ? 'selected' : ''}}>Computer Science</option>
+            <option value="Science" name="Courses" {{ $users->Courses == 'Science' ? 'selected' : ''}}>Science</option>
+            <option value="Electronics" name="Courses" {{ $users->Courses == 'Electronics' ? 'selected' : ''}}>Electronics</option>
+            <option value="Mechanical" name="Courses" {{ $users->Courses == 'Mechanical' ? 'selected' : ''}}>Mechanical</option>
             </select><br>
             </div><br>
+
             <label for="">Time</label>
-            <input type="time" name="Time"  value="{{ $editObj->Time }}">
+            <input type="time" name="Time"  value="{{ $users->Time }}" class="form-control">
             <button type="Submit" name="Submit" class="btn btn-success mx-auto mt-5 d-block">Submit</button>
             </form>
             </div>
