@@ -44,8 +44,11 @@
         <td>{{$user->confirm_Pass}}</td>
         <td>{{$user->Birthday}}</td>
         <td>{{$user->Date}}</td> 
-        <td>{{$user->Gender}}</td>  
-        <td>{{$user->Hobbies}}</td>  
+        <td>{{$user->Gender}}</td> 
+        <td> 
+        {{$user->hobby}}
+        </td>
+          
         <td>{{$user->Courses}}</td>  
         <td>{{$user->Time}}</td>  
       

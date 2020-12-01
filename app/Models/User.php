@@ -50,20 +50,21 @@ class User extends Authenticatable
         $dataArr['Birthday'] = $request['Birthday'];
         $dataArr['Date'] = $request['Date'];
         $dataArr['Gender'] = $request['Gender'];
-
-        $dataArr['Hobbies'] = $request['checkbox-Hobbies'];
-        $dataArray = array();
-        
-        foreach($dataArr as $data){
-            $dataArray[] = $data;
-        }
+        $dataArr['hobby'] =  json_encode($request['hobby']);
+    
+        // $array = $request['hobby'];
+        // foreach ($array as $hob){
+        //     $dataArray[] = $hob;
+        // }
+        // $dataArr['hobby'] = json_encode($dataArray);
 
         $dataArr['Courses'] = $request['Courses'];
         $dataArr['Time'] = $request['Time'];
         if(!empty($request['id'])){
             $updateObj = User::where('id',$request['id'])->update($dataArr);
         }else{
-            $this->create($dataArr);
+           
+            $this->insert($dataArr);
         }
         
     

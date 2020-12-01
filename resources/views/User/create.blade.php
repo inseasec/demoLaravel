@@ -49,13 +49,13 @@
             <label for="">Hobbies</label>
             <div class="form-control" required>
             <label for="" required>Eating</label>
-            <input type="checkbox" id="Eating" value="Eating" name="Hobbies"><br>
+            <input type="checkbox" id="Eating" value="Eating" name="hobby[]"><br>
             <label for="">Sleeping</label>
-            <input type="checkbox" id="Sleeping" value="Sleeping" name="Hobbies"><br>
+            <input type="checkbox" id="Sleeping" value="Sleeping" name="hobby[]"><br>
             <label for="">Travelling</label>
-            <input type="checkbox" id="Travelling" value="Travelling" name="Hobbies"><br>
+            <input type="checkbox" id="Travelling" value="Travelling" name="hobby[]"><br>
             <label for="">Studying</label>
-            <input type="checkbox" id="Studying" value="Studying" name="Hobbies"><br>
+            <input type="checkbox" id="Studying" value="Studying" name="hobby[]"><br>
             </div><br>
 
             <label for="">Courses</label>

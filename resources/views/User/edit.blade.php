@@ -47,15 +47,19 @@
             </div>
          
             <label for="">Hobbies</label>
+            @php
+            $hobby = json_decode($users->hobby);
+            @endphp
+
             <div class="form-control">
             <label for="">Eating</label>
-            <input type="checkbox" id="Eating" name="checkbox-Hobbies[]" value="Eating" {{ $users->Hobbies == 'Eating' ? 'checked' : ''}}><br>    
+            <input type="checkbox" id="Eating" name="hobby[]" value="Eating" {{ in_array ('Eating', $hobby) ? 'checked' : ''}}><br>    
             <label for="">Sleeping</label>
-            <input type="checkbox" id="Sleeping" name="checkbox-Hobbies[]" value="Sleeping" {{ $users->Hobbies == 'Sleeping' ? 'checked' : ''}}><br>
+            <input type="checkbox" id="Sleeping" name="hobby[]" value="Sleeping" {{ in_array ('Sleeping', $hobby) ? 'checked' : ''}}><br>
             <label for="">Travelling</label>
-            <input type="checkbox" id="Travelling" name="checkbox-Hobbies[]" value="Travelling" {{ $users->Hobbies == 'Travelling' ? 'checked' : ''}}><br>
+            <input type="checkbox" id="Travelling" name="hobby[]" value="Travelling" {{ in_array ('Travelling', $hobby) ? 'checked' : ''}}><br>
             <label for="">Studying</label>
-            <input type="checkbox" id="Studying" name="checkbox-Hobbies[]" value="Studying" {{ $users->Hobbies == 'Studying' ? 'checked' : ''}}>
+            <input type="checkbox" id="Studying" name="hobby[]" value="Studying" {{ in_array ('Studying', $hobby) ? 'checked' : ''}}>
             </div>
             
             <label for="">Courses</label>
@@ -69,7 +73,10 @@
             </div><br>
 
             <label for="">Time</label>
-            <input type="time" name="Time"  value="{{ $users->Time }}" class="form-control">
+            <input type="text" name="Time"  value="{{ $users->Time }}" class="form-control"><br>
+            <!-- <label for="">Time</label> -->
+            <input type="time" name="Time"  value="" class="form-control"><br>
+
             <button type="Submit" name="Submit" class="btn btn-success mx-auto mt-5 d-block">Submit</button>
             </form>
             </div>

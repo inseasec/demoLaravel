@@ -12,7 +12,7 @@ class UserController extends Controller{
     }
 
     public function insert(Request $request) {
-
+        // dd('jas');
         $usrObj = new User();
         $usrObj->saveUser($request);
         return redirect('user/show');  
