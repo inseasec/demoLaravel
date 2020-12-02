@@ -18,7 +18,7 @@ class AddFieldsToStudentsTable extends Migration
             $table->string('Name');
             $table->string('Email');
             $table->integer('Number');
-            $table->string('Password');
+            $table->string('Pass');
             $table->string('confirm_pass');
             $table->date('Birthday');
             $table->date('Date');
