@@ -52,10 +52,7 @@ class User extends Authenticatable
         $dataArr['Gender'] = $request['Gender'];
         $dataArr['hobby'] =  json_encode($request['hobby']);
     
-        // $array = $request['hobby'];
-        // foreach ($array as $hob){
-        //     $dataArray[] = $hob;
-        // }
+      
         // $dataArr['hobby'] = json_encode($dataArray);
 
         $dataArr['Courses'] = $request['Courses'];
