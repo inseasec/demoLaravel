@@ -8,12 +8,22 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src = "https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
   </head>
+  <script>
+  $(document).ready(function(){
+    $("#display_records").hide();
+    $("#show_hide").click(function(){
+      $("#display_records").slideToggle();
+    });
+  });
+  </script>
 <body>
  <!-- <div id="error"></div> -->
-      <a href='create' class="btn btn-lg btn btn-primary mt-5">Add Record</a>
+      <a href='create' class="btn btn-lg btn btn-primary mt-5 ml-5 ">Add Record</a>
+      <a href='#' id="show_hide" class="btn btn-lg btn btn-primary mt-5 ml-5">Show/hide Records</a>
       <table class= "table table-dark mt-5">
-        <thead>
+        <thead >
         <tr>
           <th>Id</th>
           <th>Name</th>
@@ -31,7 +41,7 @@
           </tr>
         </thead>
 
-        <tbody>
+        <tbody id="display_records">
 
         @foreach($users as $user)
         
@@ -50,15 +60,16 @@
         </td>
           
         <td>{{$user->Courses}}</td>  
-        <td>{{$user->Time}}</td>  
-      
-
+        <td>{{$user->Time}}</td>
+        
+    
         <td><a href='edit/{{$user->id}}' class="btn btn-primary" >Update</a></td>
 
       <!-- <td><a href='delete/{{$user->id}}' class="btn btn-danger" onclick="return confirm('You really want to delete this record?')">Delete</a></td> -->
 
       <td><button class="btn btn-danger" id="delete" data-Id="{{ $user->id }}">Delete</button></td>
->
+      
+
         </tr>
         @endforeach
         </tbody>
