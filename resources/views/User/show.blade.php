@@ -10,59 +10,72 @@
     <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
   </head>
+  <style>
+    .data{
+      display: none;
+    }
+  </style>
   <script>
-  $(document).ready(function(){
-    $("#display_records").hide();
-    $("#show_hide").click(function(){
-      $("#display_records").slideToggle();
-    });
-  });
+  // $(document).ready(function(){
+  //   $(".show_hide").click(function(){
+  //     var tableData = $('.show_hide').closest('tr').children("td").map(function(){
+  //       return $(this).text();
+  //     }).get();
+  //     $('.data').slideToggle("slow").css("color", "orange");
+  //     // alert(tableData[0] + " , " + tableData[1]);
+  //   });
+  // });
+
+      $(document).ready(function(){
+        $(".show_hide").click(function(){
+          $(this).closest("tr").find('.data').slideToggle().css("color", "orange");
+        });
+      });
+
   </script>
 <body>
- <!-- <div id="error"></div> -->
+
+//  <div id="error"></div> 
       <a href='create' class="btn btn-lg btn btn-primary mt-5 ml-5 ">Add Record</a>
-      <a href='#' id="show_hide" class="btn btn-lg btn btn-primary mt-5 ml-5">Show/hide Records</a>
       <table class= "table table-dark mt-5">
-        <thead >
+        <thead>
         <tr>
-          <th>Id</th>
+          <th class="data">Id</th>
           <th>Name</th>
-          <th>Email</th>
-          <th>Password</th>
-          <th>Number</th>
-          <th>Confirm Password</th>
-          <th>Birthday</th>
-          <th>Date</th>
-          <th>Gender</th> 
-          <th>Hobbies</th> 
-          <th>Courses</th> 
-          <th>Time</th> 
-          <th>Action</th>
+          <th class="data">Email</th>
+          <th class="data">Password</th>
+          <th class="data">Number</th>
+          <th class="data">Confirm Password</th>
+          <th class="data">Birthday</th>
+          <th class="data">Date</th>
+          <th class="data">Gender</th> 
+          <th class="data">Hobbies</th> 
+          <th class="data">Courses</th> 
+          <th class="data">Time</th> 
+          <th class="data text-center">Action</th>
           </tr>
         </thead>
 
-        <tbody id="display_records">
+        <tbody>
 
         @foreach($users as $user)
         
         <tr id="row">
-        <td>{{$user->id}}</td>
+        <td class="data">{{$user->id}}</td>
         <td>{{$user->Name}}</td>
-        <td>{{$user->Email}}</td>
-        <td>{{$user->Password}}</td>
-        <td>{{$user->Number}}</td>  
-        <td>{{$user->confirm_Pass}}</td>
-        <td>{{$user->Birthday}}</td>
-        <td>{{$user->Date}}</td> 
-        <td>{{$user->Gender}}</td> 
-        <td> 
-        {{$user->hobby}}
-        </td>
+        <td class="data">{{$user->Email}}</td>
+        <td class="data">{{$user->Password}}</td>
+        <td class="data">{{$user->Number}}</td>  
+        <td class="data">{{$user->confirm_Pass}}</td>
+        <td class="data">{{$user->Birthday}}</td>
+        <td class="data">{{$user->Date}}</td> 
+        <td class="data">{{$user->Gender}}</td> 
+        <td class="data">{{$user->hobby}}</td>
           
-        <td>{{$user->Courses}}</td>  
-        <td>{{$user->Time}}</td>
+        <td class="data">{{$user->Courses}}</td>  
+        <td class="data">{{$user->Time}}</td>
         
-    
+        <td><button class="show_hide btn btn-primary">Show/Hide Records</button><td>
         <td><a href='edit/{{$user->id}}' class="btn btn-primary" >Update</a></td>
 
       <!-- <td><a href='delete/{{$user->id}}' class="btn btn-danger" onclick="return confirm('You really want to delete this record?')">Delete</a></td> -->
