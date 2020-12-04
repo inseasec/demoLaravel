@@ -26,7 +26,9 @@ class AddFieldsToStudentsTable extends Migration
             $table->string('hobby');
             $table->string('Courses');
             $table->time('Time');
-            $table->integer('pincode');
+            $table->integer('pincode');            
+            $table->string('country');            
+
 
         });
     }
