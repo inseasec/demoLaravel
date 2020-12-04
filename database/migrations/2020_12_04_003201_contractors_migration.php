@@ -15,7 +15,7 @@ class ContractorsMigration extends Migration
     {
         Schema::create('contractors', function (Blueprint $table) {
             $table->id();
-            $table->string('email');
+            $table->string('email_id');
             $table->timestamps();
         });
     }
