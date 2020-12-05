@@ -26,16 +26,15 @@
   //   });
   // });
 
-      $(document).ready(function(){
-        $(".show_hide").click(function(){
-          $(this).closest("tr").find('.data').slideToggle().css("color", "orange");
-        });
+    $(document).ready(function(){
+      $(".show_hide").click(function(){
+        $(this).closest("tr").find('.data').slideToggle().css("color", "orange");
       });
+    });
 
   </script>
 <body>
-
-//  <div id="error"></div> 
+  <div id="error"></div> 
       <a href='create' class="btn btn-lg btn btn-primary mt-5 ml-5 ">Add Record</a>
       <table class= "table table-dark mt-5">
         <thead>
@@ -90,7 +89,6 @@
       </table>
 
       <script>
-      // $("#error").hide();
       $('td #delete').on('click',function(){
 
         var Id = $(this).data("id");
