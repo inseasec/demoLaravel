@@ -15,6 +15,42 @@
   </head>
   <style>
 
+    .more .sign:after{
+        content:"+";
+        display:inline-block;
+    }
+
+    .more.expand .sign:after{
+        content:"-";
+    }
+
+    tr.more{
+        cursor:pointer;
+    }
+
+    .add a:hover i{
+            display:none;
+    }
+
+    .add a:hover b{
+        display:block;
+        text-align:center;
+        color: Tomato;
+    }
+
+    .add a:hover{
+        font-size: 30px;
+    }
+    
+    .add b{
+        display:none;
+    }
+
+    .add{
+        height:70px;
+        width: 150px;
+    }
+
     .details{
         border: 1px solid black;
         width: 40%;
@@ -43,25 +79,27 @@
 
 <body>
   <div id="error"></div> 
-    <a href='create' class="btn btn-lg btn btn-primary mt-5 ml-5 mb-5">Add Record</a>
-        <table class= "table">
-            <tr>
-                <th>Name</th>
-                <th colspan="11" class="text-center mx-auto">Actions</th>
+    <div class="add">
+    <a href='create'><i class="fa fa-plus-square mt-5 ml-5 mb-5" aria-hidden="true" style="font-size:70px;"></i><b>Add Records</b></a>
+    </div>
+        <div class="col-md-12">
+        <table class="table" style="margin-top:150px;">
+            <tr class="more expand">
+                <th style="text-align:center;"><b>Name</b><span class="sign"></span></th>
+                <th colspan="2" class="text-center mx-auto"><b>Actions</b></th>
             </tr>
 
             @foreach($users as $user)
-            <tr>
-                <td>{{$user->Name}}</td>
-                <td><button class="show_hide btn btn-primary mx-auto d-block">Show/Hide Records</button></td>
-                <td style="text-align:center;"><a href='edit/{{$user->id}}'><i class="fad fa-user-edit"></i></a></td>
+            <tr class="record">
+                <td class="show_hide" style="text-align:center">{{$user->Name}}</td>
+                <td style="text-align:center;"><a href='edit/{{$user->id}}'><i class="fa fa-user-edit"></i></a></td>
                 <!-- <td style="text-align:center;"><a href='edit/{{$user->id}}' class="btn btn-primary">Update</a></td> -->
                 <!-- <td><button class="btn btn-danger mx-auto d-block" id="delete" data-Id="{{ $user->id }}">Delete</button></td> -->
                 <td style="text-align:center;"><i class="fa fa-trash" id="delete" data-Id="{{ $user->id }}" aria-hidden="true" ></i></button></td>
                 </tr>
 
             <tr>
-                <td colspan="4">
+                <td colspan="3">
                     <div class="details bg-dark text-white ml-5">
                     <div style="display:inline-block;">
                     <h5>Id:</h5> 
@@ -96,6 +134,7 @@
              </td>
         </tr>          
     </table>
+</div>
 
     <script>    
         $(document).ready(function() {
@@ -107,7 +146,15 @@
         });
     </script>
 
-      <script>
+    <script>
+        $(document).ready(function(){
+            $('.more').click(function(){
+                $('.record').toggleClass('expand').nextUntil('tr.more').slideToggle();
+            });
+        });
+    </script>
+
+    <script>
       $('td #delete').on('click',function(){
 
         var Id = $(this).data("id");
@@ -127,9 +174,9 @@
         }
     });
 
-});
+    });
 
-</script>   
+    </script>   
 
 </body>
 </html>
