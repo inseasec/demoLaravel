@@ -27,14 +27,29 @@ Route::post('/user/insert', 'UserController@insert');
 
 Route::get('/user/show','UserController@show');
 
-// //update data
+//update data
 
 Route::get('/user/edit/{id}', 'UserController@edit');
 
 Route::post('user/update', 'UserController@update');
 
+//delete data
+
 
 //Route::get('/user/delete/{id}', 'UserController@delete');
-
 Route::any('user/delete/{id}', 'UserController@delete');
 
+//products data
+
+Route::get('fashion/products', 'UserController@products');
+Route::get('fashion/getcat/{depart}', 'UserController@getcat');
+Route::get('fashion/getproducts/{id}', 'UserController@getproduct');
+
+//crud with ajax
+
+Route::get('/user/createform', 'UserController@createForm');
+Route::post('/user/insertdata', 'UserController@insertData');
+Route::get('/user/showdata','UserController@showData');
+Route::get('/user/editdata','UserController@editData');
+Route::post('/user/updatedata','UserController@updateData');
+Route::any('/user/deletedata','UserController@deleteData');
